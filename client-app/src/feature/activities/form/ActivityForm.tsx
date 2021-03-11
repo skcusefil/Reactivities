@@ -7,11 +7,14 @@ interface Props{
     activity: Activity| undefined;
     closeForm:() => void;
     createOrEdit:(activity: Activity) => void;
+    Submitting:boolean;
 
 }
 
-export default function ActivityForm({closeForm, activity: selectedActivity, createOrEdit}:Props)
-{
+export default function ActivityForm({closeForm, 
+    activity: selectedActivity, 
+    createOrEdit,
+    Submitting}:Props){
 
     // ใช้สเตตเม้นท์เหมือน C# ค่าตัวแปร = activity ถ้าค่า activity ไม่เป็น Null ให้ค่าเหมือนกับ Model ที่สร้างไว้
     const initialState = selectedActivity ?? {
@@ -44,10 +47,10 @@ export default function ActivityForm({closeForm, activity: selectedActivity, cre
                 <Form.Input placeholder='Title' value={activity.title} name='title' onChange={handleInputChange} />
                 <Form.Input placeholder='Description'value={activity.description} name='description' onChange={handleInputChange}/>
                 <Form.Input placeholder='Category' value={activity.category} name='category' onChange={handleInputChange} />
-                <Form.Input placeholder='Date' value={activity.date} name='date' onChange={handleInputChange} />
+                <Form.Input type='date' placeholder='Date' value={activity.date} name='date' onChange={handleInputChange} />
                 <Form.Input placeholder='City' value={activity.city} name='city' onChange={handleInputChange}/>
                 <Form.Input placeholder='Venue' value={activity.venue} name='venue' onChange={handleInputChange} />
-                <Button floated='right' positive type='submit' content='Submit' onChange={handleInputChange} />
+                <Button floated='right' positive type='submit' content='Submit' onChange={handleInputChange} loading={Submitting} />
                 <Button floated='right' positive type='button' content='Cancel' onClick={closeForm} onChange={handleInputChange} />
             </Form>
         </Segment>
