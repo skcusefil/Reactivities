@@ -2,11 +2,12 @@ import { observer } from "mobx-react-lite";
 import { ChangeEvent, useState } from "react";
 import { Button, Form, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
+import ActivityDashboard from "../dashboard/ActivityDashboard";
 
 export default observer( function ActivityForm(){
 
     const {activityStore} = useStore();
-    const {selectedActivity, closeForm, createActivity,updateActivity,loading} = activityStore;
+    const {selectedActivity, createActivity,updateActivity,loading} = activityStore;
 
     // ใช้สเตตเม้นท์เหมือน C# ค่าตัวแปร = activity ถ้าค่า activity ไม่เป็น Null ให้ค่าเหมือนกับ Model ที่สร้างไว้
     const initialState = selectedActivity ?? {
@@ -43,7 +44,7 @@ export default observer( function ActivityForm(){
                 <Form.Input placeholder='City' value={activity.city} name='city' onChange={handleInputChange}/>
                 <Form.Input placeholder='Venue' value={activity.venue} name='venue' onChange={handleInputChange} />
                 <Button floated='right' positive type='submit' content='Submit' onChange={handleInputChange} loading={loading} />
-                <Button floated='right' positive type='button' content='Cancel' onClick={closeForm} onChange={handleInputChange} />
+                <Button floated='right' positive type='button' content='Cancel' onChange={handleInputChange} />
             </Form>
         </Segment>
     )

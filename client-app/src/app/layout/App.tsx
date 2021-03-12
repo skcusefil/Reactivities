@@ -1,29 +1,26 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import './styles.css';
 import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import ActivityDashboard from '../../feature/activities/dashboard/ActivityDashboard';
-import LoadingComponent from './LoadingComponent';
-import { useStore } from '../stores/store';
 import { observer } from 'mobx-react-lite';
+import { Route } from 'react-router';
+import HomePage from '../../feature/home/HomePage';
+import ActivityForm from '../../feature/activities/form/ActivityForm';
+import ActiivityDetails from '../../feature/activities/details/ActiivityDetails';
 
 
 function App() {
 
-  const {activityStore} = useStore();
 
-  //here will create with connection between client and api
-  useEffect(()=> {
-      activityStore.loadActivities();
-  },[activityStore])
-
-  //Loading indicator
-  if(activityStore.loadingInitial) return <LoadingComponent content='Loading app' />
   return (
     <Fragment>
       <NavBar/>
       <Container style={{marginTop: '7em'}}>
-        <ActivityDashboard />
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/activities' component={ActivityDashboard} />
+        <Route path='/activities/:id' component={ActiivityDetails} />
+        <Route path='/createActivity' component={ActivityForm} />
       </Container>
     </Fragment>
   );
