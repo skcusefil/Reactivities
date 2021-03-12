@@ -1,20 +1,12 @@
+import { observer } from "mobx-react-lite";
 import { ChangeEvent, useState } from "react";
 import { Button, Form, Segment } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
+import { useStore } from "../../../app/stores/store";
 
-interface Props{
+export default observer( function ActivityForm(){
 
-    activity: Activity| undefined;
-    closeForm:() => void;
-    createOrEdit:(activity: Activity) => void;
-    Submitting:boolean;
-
-}
-
-export default function ActivityForm({closeForm, 
-    activity: selectedActivity, 
-    createOrEdit,
-    Submitting}:Props){
+    const {activityStore} = useStore();
+    const {selectedActivity, closeForm, createActivity,updateActivity,loading} = activityStore;
 
     // ใช้สเตตเม้นท์เหมือน C# ค่าตัวแปร = activity ถ้าค่า activity ไม่เป็น Null ให้ค่าเหมือนกับ Model ที่สร้างไว้
     const initialState = selectedActivity ?? {
@@ -27,11 +19,10 @@ export default function ActivityForm({closeForm,
         venue: ''    
     }
 
-    const [activity , setActivity ] = useState(initialState);
+    const [activity,setActivity] = useState(initialState);
 
     function handleSubmit(){
-        createOrEdit(activity);
-        //console.log(activity);
+        activity.id? updateActivity(activity) : createActivity(activity);
     }
 
     //handle when something changed in Form.Input
@@ -39,6 +30,7 @@ export default function ActivityForm({closeForm,
         const {name, value} = event.target;
         setActivity({...activity,[name]: value});
     }
+
 
 
     return (
@@ -50,9 +42,9 @@ export default function ActivityForm({closeForm,
                 <Form.Input type='date' placeholder='Date' value={activity.date} name='date' onChange={handleInputChange} />
                 <Form.Input placeholder='City' value={activity.city} name='city' onChange={handleInputChange}/>
                 <Form.Input placeholder='Venue' value={activity.venue} name='venue' onChange={handleInputChange} />
-                <Button floated='right' positive type='submit' content='Submit' onChange={handleInputChange} loading={Submitting} />
+                <Button floated='right' positive type='submit' content='Submit' onChange={handleInputChange} loading={loading} />
                 <Button floated='right' positive type='button' content='Cancel' onClick={closeForm} onChange={handleInputChange} />
             </Form>
         </Segment>
     )
-}
+})

@@ -1,6 +1,5 @@
 
  import axios, {AxiosResponse} from 'axios';
-import { resolve } from 'node:path';
 import { Activity } from '../models/activity';
 //import { TableBody } from 'semantic-ui-react';
 
@@ -27,7 +26,7 @@ axios.interceptors.response.use(async response =>{
 //use Type T, ähnlich wie in C#
 const responseBody =<T> (response: AxiosResponse) =>response.data;
 
-const request ={
+const request = {
     get:<T> (url:string) => axios.get(url).then(responseBody),
     post: <T> (url:string, body:{}) => axios.post(url,body).then(responseBody),
     put: <T>  (url:string, body:{}) => axios.put(url,body).then(responseBody),
@@ -47,7 +46,3 @@ const agent = {
 }
 
 export default agent;
-
-function activity<T>(arg0: string, activity: any) {
-    throw new Error('Function not implemented.');
-}
