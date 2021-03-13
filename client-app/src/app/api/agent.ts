@@ -24,13 +24,13 @@ axios.interceptors.response.use(async response =>{
 })
 
 //use Type T, ähnlich wie in C#
-const responseBody =<T> (response: AxiosResponse) =>response.data;
+const responseBody =<T> (response: AxiosResponse<T>) =>response.data;
 
 const request = {
-    get:<T> (url:string) => axios.get(url).then(responseBody),
-    post: <T> (url:string, body:{}) => axios.post(url,body).then(responseBody),
-    put: <T>  (url:string, body:{}) => axios.put(url,body).then(responseBody),
-    delete:<T>  (url:string) => axios.delete(url).then(responseBody)
+    get:<T> (url:string) => axios.get<T>(url).then(responseBody),
+    post: <T> (url:string, body:{}) => axios.post<T>(url,body).then(responseBody),
+    put: <T>  (url:string, body:{}) => axios.put<T>(url,body).then(responseBody),
+    delete:<T>  (url:string) => axios.delete<T>(url).then(responseBody)
 }
 
 const Activities = {
