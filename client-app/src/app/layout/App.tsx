@@ -20,7 +20,7 @@ function App() {
         <Route exact path='/' component={HomePage} />
         <Route exact path='/activities' component={ActivityDashboard} />
         <Route path='/activities/:id' component={ActiivityDetails} />
-        <Route path='/createActivity' component={ActivityForm} />
+        <Route path={['/createActivity','/manage/:id']} component={ActivityForm} />
       </Container>
     </Fragment>
   );

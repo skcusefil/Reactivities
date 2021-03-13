@@ -3,14 +3,11 @@ import { useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
-import ActiivityDetails from '../details/ActiivityDetails';
-import ActivityForm from '../form/ActivityForm';
 import ActivityList from './ActivityList';
 
 export default observer( function ActivityDashboard() {
     const {activityStore} = useStore();
 
-    const{selectedActivity, editMode} = activityStore;
 
     //here will create with connection between client and api
     useEffect(()=> {
@@ -26,11 +23,7 @@ export default observer( function ActivityDashboard() {
               <ActivityList />
            </Grid.Column>
            <Grid.Column width='6'>
-          { selectedActivity && !editMode &&
-            <ActiivityDetails />}
-          {editMode &&
-            <ActivityForm
-            />}
+             <h2>Activity filter</h2>
            </Grid.Column>
        </Grid>
     )
