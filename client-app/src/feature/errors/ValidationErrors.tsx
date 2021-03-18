@@ -16,6 +16,5 @@ export default function ValidationErrors({errors}:Props) {
                </Message.List>
            )}
        </Message>
-    )
-    
+    )  
 }
