@@ -1,4 +1,5 @@
-﻿using Application.Activities;
+﻿using API.DTOs;
+using Application.Activities;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -51,5 +52,6 @@ namespace API.Controllers
         {
             return HandleResult(await Mediator.Send(new Delete.Command { Id = id }));
         }
+     
     }
 }
