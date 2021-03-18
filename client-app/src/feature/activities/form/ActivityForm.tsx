@@ -90,6 +90,7 @@ export default observer(function ActivityForm() {
 
                         <Header content='Location Details' sub color='teal' />
                         <MyTextInput placeholder='City' name='city' />
+                        
                         <MyTextInput placeholder='Venue' name='venue' />
 
                         <Button
