@@ -70,7 +70,6 @@ namespace API.Controllers
             if (result.Succeeded)
             {
                 return CreateUserObject(user);
-
             }
             return Unauthorized();
         }

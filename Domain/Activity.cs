@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain
 {
@@ -18,5 +15,6 @@ namespace Domain
         public string Category { get; set; }
         public string City { get; set; }
         public string Venue { get; set;}
+        public ICollection<ActivityAttendee> Attendees { get; set; }
     }
 }
