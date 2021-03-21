@@ -15,8 +15,6 @@ namespace Persistence
         {
             base.OnModelCreating(modelBuilder);
 
-            base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<ActivityAttendee>(x => x.HasKey(aa => new { aa.AppUserId, aa.ActivityId }));
 
             modelBuilder.Entity<ActivityAttendee>()
