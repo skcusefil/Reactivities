@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IUserAcessor
+    public interface IUserAccessor
     {
         string GetUsername();
     }

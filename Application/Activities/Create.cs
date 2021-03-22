@@ -33,9 +33,9 @@ namespace Application.Activities
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly DataContext _context;
-            private readonly IUserAcessor _useracessor;
+            private readonly IUserAccessor _useracessor;
 
-            public Handler(DataContext context, IUserAcessor userAcessor)
+            public Handler(DataContext context, IUserAccessor userAcessor)
             {
                 _context = context;
                 _useracessor = userAcessor;

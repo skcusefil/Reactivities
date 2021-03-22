@@ -38,12 +38,12 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new Create.Command { Activity = activity }));
         }
 
-        [Authorize(Policy ="IsActivityHost")]
+        [Authorize(Policy = "IsActivityHost")]
         [HttpPut("{id}")]
         public async Task<IActionResult> EditActivity(Guid id, Activity activity)
         {
             activity.Id = id;
-            return Ok(await Mediator.Send(new Edit.Command { Activity = activity }));
+            return HandleResult(await Mediator.Send(new Edit.Command { Activity = activity }));
         }
 
         [Authorize(Policy = "IsActivityHost")]
@@ -52,7 +52,7 @@ namespace API.Controllers
         {
             return HandleResult(await Mediator.Send(new Delete.Command { Id = id }));
         }
-     
+
         [HttpPost("{id}/attend")]
         public async Task<IActionResult> Attend(Guid id)
         {
