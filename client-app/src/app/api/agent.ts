@@ -61,6 +61,7 @@ axios.interceptors.response.use(async response => {
             history.push('/not-found');
             break;
         case 500:
+            console.log(data)
             store.commonStore.setServerError(data);
             history.push('/server-error');
             break;

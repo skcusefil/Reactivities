@@ -16,8 +16,6 @@ import MyDateInput from "./MyDateInput";
 import {  ActivityFormValues } from "../../../app/models/activity";
 
 
-
-
 export default observer(function ActivityForm() {
 
     const { activityStore } = useStore();

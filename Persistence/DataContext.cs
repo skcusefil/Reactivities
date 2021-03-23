@@ -31,7 +31,7 @@ namespace Persistence
         //ถ้าไม่ reference project ของ โมเดล หรือใส่ reference ผิด จะเออเร่อ asp.net No suitable constructor was found for entity type
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
-
+        public DbSet<Photo> Photos { get; set; }
 
         /*สร้าง migrations
          * 1. เลือก Defualt Project ให้ตรงกับโปรเจคที่จะสร้าง migrations

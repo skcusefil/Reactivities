@@ -1,7 +1,6 @@
 export interface ServerError{
 
-    statusCode:number;
-    message:string;
-    detais:string;
-    
+    statusCode: number;
+    message: string;
+    details: string;
 }
