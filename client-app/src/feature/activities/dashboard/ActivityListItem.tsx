@@ -12,17 +12,24 @@ export default function ActivityListItem({ activity }: Props) {
     return (
         <Segment.Group>
             <Segment>
-                {activity.isCancelled && 
-                <Label attached='top' color='red' content='Cancelled' style={{textAlign: 'center'}} />
+                {activity.isCancelled &&
+                    <Label attached='top' color='red' content='Cancelled' style={{ textAlign: 'center' }} />
                 }
                 <Item.Group>
                     <Item>
-                        <Item.Image style={{marginBottom: 3}} size='tiny' circular src='/Images/user.png' />
+                        <Link to={`/profiles/${activity.hostUsername}`} >
+                            <Item.Image style={{ marginBottom: 3 }} size='tiny' circular src={activity.host?.image || '/Images/user.png'} />
+                        </Link>
                         <Item.Content>
                             <Item.Header as={Link} to={`/activities/${activity.id}`}>
                                 {activity.title}
                             </Item.Header>
-                            <Item.Description>Hosted by {activity.host?.displayName}</Item.Description>
+                            <Item.Description>
+                                Hosted by
+                                <Link to={`/profiles/${activity.hostUsername}`} >
+                                    {' ' + activity.host?.displayName}
+                                </Link>
+                            </Item.Description>
                             {activity.isHost && (
                                 <Item.Description>
                                     <Label basic color='orange'>
