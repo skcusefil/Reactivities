@@ -26,18 +26,17 @@ namespace Persistence
                .HasOne(u => u.Activity)
                .WithMany(a => a.Attendees)
                .HasForeignKey(aa => aa.ActivityId);
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(a => a.Activity)
+                .WithMany(c => c.Comments)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
-        //ถ้าไม่ reference project ของ โมเดล หรือใส่ reference ผิด จะเออเร่อ asp.net No suitable constructor was found for entity type
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
         public DbSet<Photo> Photos { get; set; }
-
-        /*สร้าง migrations
-         * 1. เลือก Defualt Project ให้ตรงกับโปรเจคที่จะสร้าง migrations
-         * 2. ใส่โค๊ด enable-migrations ที่ package manager console
-         * 3. ใส่โค๊ด "add-migration MigrationName"  ที่ package manager console 
-        */
+        public DbSet<Comment> Comments { get; set; }
 
     }
 }

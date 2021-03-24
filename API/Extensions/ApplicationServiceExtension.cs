@@ -32,8 +32,13 @@ namespace API.Extensions
 
             services.AddCors(opt =>
             {
+                //for connecting with SignalR need .AllowCredentials()
                 opt.AddPolicy("CorsPolicy", policy => {
-                    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                    policy
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+                    .WithOrigins("http://localhost:3000");
                 });
             });
 
@@ -42,6 +47,7 @@ namespace API.Extensions
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.Configure<CloudinarySetting>(configuration.GetSection("Cloudinary"));
+            services.AddSignalR();
 
             return services;
         }
