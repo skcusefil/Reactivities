@@ -33,7 +33,7 @@ body{
   font-weight: normal;
 }
 
-/* here does't work */
+/* work with using !important behide */
 .react-calendar{
   width: 100% !important;
   border: none;
