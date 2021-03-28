@@ -21,7 +21,7 @@ export default observer (function ActiivityDetails() {
         return ()=>clearSelectedActivity();
     },[id, loadActivity, clearSelectedActivity])
 
-    if(!activity || loadingInitial) return <LoadingComponent/>;
+    if(!activity || loadingInitial) return <LoadingComponent content='Loading...' />;
     return(
         <Grid>
             <Grid.Column width={10}>

@@ -18,10 +18,10 @@ export default function ActivityListItem({ activity }: Props) {
                 <Item.Group>
                     <Item>
                         <Link to={`/profiles/${activity.hostUsername}`} >
-                            <Item.Image style={{ marginBottom: 3 }} size='tiny' circular src={activity.host?.image || '/Images/user.png'} />
+                            <Item.Image style={{ marginBottom: 3, marginRight: 20 }} size='tiny' circular src={activity.host?.image || '/Images/user.png'} />
                         </Link>
                         <Item.Content>
-                            <Item.Header as={Link} to={`/activities/${activity.id}`}>
+                            <Item.Header as={Link} to={`/activities/${activity.id}`} >
                                 {activity.title}
                             </Item.Header>
                             <Item.Description>
