@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="CloudinaryDotNet" Version="1.15.0" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.15.1" />
   </ItemGroup>
 
   <ItemGroup>

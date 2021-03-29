@@ -1,4 +1,4 @@
-import {useEffect } from 'react';
+import  {useEffect } from 'react';
 import './styles.css';
 import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
@@ -12,11 +12,11 @@ import TestErrors from '../../feature/errors/TestError';
 import { ToastContainer } from 'react-toastify';
 import NotFound from '../../feature/errors/NotFound';
 import ServerError from '../../feature/errors/ServerError';
-import LoginForm from '../../feature/users/LoginForm';
 import { useStore } from '../stores/store';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/ModalContainer';
 import ProfilePage from '../../feature/profiles/ProfilePage';
+import PrivateRoute from './PrivateRoute';
 
 
 function App() {
@@ -46,15 +46,13 @@ function App() {
             <NavBar />
             <Container style={{ marginTop: '7em' }}>
               <Switch>
-                <Route exact path='/' component={HomePage} />
-                <Route exact path='/activities' component={ActivityDashboard} />
-                <Route path='/activities/:id' component={ActiivityDetails} />
-                <Route key={location.key} path={['/createActivity', '/manage/:id']} component={ActivityForm} />
-                <Route path='/errors' component={TestErrors} />
+                <PrivateRoute exact path='/activities' component={ActivityDashboard} />
+                <PrivateRoute path='/activities/:id' component={ActiivityDetails} />
+                <PrivateRoute key={location.key} path={['/createActivity', '/manage/:id']} component={ActivityForm} />
+                <PrivateRoute path='/profiles/:username' component={ProfilePage} />
                 <Route path='/server-error' component={ServerError} />
-                <Route path='/login' component={LoginForm} />
-                <Route path='/profiles/:username' component={ProfilePage} />
                 <Route component={NotFound} />
+                <Route path='/errors' component={TestErrors} />
               </Switch>
             </Container>
           </>
