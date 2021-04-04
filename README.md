@@ -1,5 +1,5 @@
 React, ASP.NET
 
 
-End of test app
+almost final result: 
 https://jira-reactivities.herokuapp.com/
